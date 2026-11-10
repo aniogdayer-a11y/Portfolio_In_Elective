@@ -25,9 +25,6 @@ export const portfolioData: PortfolioData = {
     program: "Bachelor of Science in Information Technology (BSIT)",
     yearLevel: "3rd Year",
     section: "BSIT 303I",
-    email: "aniog.dayer@gmail.com",
-    phone: "0966 177 6821",
-    location: "Mandaluyong / Pasig, Metro Manila, Philippines",
     profilePhotoUrl: "./assets/dayer-suit-portrait.png",
     jruIdUrl: "./assets/jru-id.png",
     personalIntro: [
@@ -36,66 +33,6 @@ export const portfolioData: PortfolioData = {
       "I expanded my programming skills into Python, working with Google Colab notebooks, data structures, and scientific libraries such as Pandas and Matplotlib.",
       "Applying systematic problem-solving enabled me to analyze raw business datasets, construct multi-dimensional pivot dashboards, and generate meaningful statistical insights.",
       "I value continuous learning, academic discipline, and technical rigor as foundational qualities for delivering impactful technological solutions."
-    ],
-    educationalBackground: [
-      {
-        institution: "Jose Rizal University",
-        program: "Bachelor of Science in Information Technology",
-        years: "2025 – Present",
-        location: "Mandaluyong City, Philippines",
-        highlight: "Specialization in Data Analytics, Software Architecture, and Enterprise Systems. Active member in AWS Student Builder Group."
-      },
-      {
-        institution: "Technological Institute of the Philippines",
-        program: "Bachelor of Science in Computer Science",
-        years: "2024 – 2025",
-        location: "Quezon City, Philippines",
-        highlight: "Foundational coursework in object-oriented programming, data structures, and algorithms."
-      },
-      {
-        institution: "Capellan Institute of Technology, Inc.",
-        program: "IT Work Immersion Program",
-        years: "2024",
-        location: "Metro Manila, Philippines",
-        highlight: "Practical experience in computer hardware diagnostics, operating systems, and network configurations."
-      }
-    ],
-    interestsAndHobbies: [
-      "Data Analytics & Statistical Modeling (Excel, Pivot Tables, Formulas)",
-      "Python Data Science & Visualization (Pandas, Matplotlib, Google Colab)",
-      "Front-End Web Engineering (HTML5, Tailwind CSS, TypeScript, React)",
-      "UI/UX Interface Design & Prototyping (Figma)",
-      "Enterprise Systems & Relational Databases (SQL)",
-      "Digital Illustration & Graphic Artwork"
-    ],
-    trainingsAndExperience: [
-      {
-        role: "Creatives Team Member",
-        organization: "AWS Student Builder Group – José Rizal University",
-        year: "2025 – Present",
-        bullets: [
-          "Developed digital assets, visual layouts, and publication materials for cloud technology seminars.",
-          "Collaborated with interdisciplinary student leaders on student tech workshops."
-        ]
-      },
-      {
-        role: "IT Work Immersion Trainee",
-        organization: "Capellan Institute of Technology, Inc.",
-        year: "2024",
-        bullets: [
-          "Performed diagnostics, hardware upgrades, and operating system deployment on client computers.",
-          "Assisted in configuring local area network routing topologies."
-        ]
-      },
-      {
-        role: "Hackathon Participant",
-        organization: "ImaGnation: GCash Innovation Challenge",
-        year: "2024",
-        bullets: [
-          "Collaborated with team members to prototype a fintech mobile application workflow.",
-          "Synthesized user journey wireframes and structured project presentations."
-        ]
-      }
     ],
     skills: {
       technical: [
@@ -118,104 +55,6 @@ export const portfolioData: PortfolioData = {
       ]
     }
   },
-  syllabus: {
-    description: "ITC C503 covers foundational and intermediate competencies in Data Science and Analytics, focusing on exploratory data analysis, descriptive statistics, advanced spreadsheet calculations, probability, pivot reporting dashboards, and Python data science programming using Google Colab, Pandas, and Matplotlib.",
-    courseObjectives: [
-      "Apply descriptive statistical methods and probability theory to analyze real-world datasets.",
-      "Master advanced spreadsheet functions, conditional formatting, frequency distribution tables, and charting.",
-      "Construct multi-dimensional business reporting models utilizing Pivot Tables, Pivot Charts, and interactive Slicers.",
-      "Develop Python programs using Google Colab to process lists, tuples, and dictionary data structures.",
-      "Implement data visualization pipelines and exploratory data analysis using Pandas and Matplotlib."
-    ],
-    modules: [
-      {
-        moduleNumber: 1,
-        title: "Introduction to Data Science & Spreadsheet Analytics",
-        term: "Prelim",
-        topics: [
-          "Data science lifecycle and analytical methodologies",
-          "Descriptive statistics: Mean, Median, Mode, Variance, Standard Deviation",
-          "Conditional formatting, rules, and cell styles in Microsoft Excel"
-        ],
-        outcomes: [
-          "Perform automated data cleaning, formatting, and baseline statistical evaluations in Excel."
-        ]
-      },
-      {
-        moduleNumber: 2,
-        title: "Advanced Excel Formulas, Grouped Frequency & Charts",
-        term: "Prelim",
-        topics: [
-          "Logical functions, nested IF conditions, and data validation",
-          "Constructing Grouped Frequency Distribution tables",
-          "Statistical chart generation: Column, Bar, Line, and Pie percentage distributions"
-        ],
-        outcomes: [
-          "Produce clean visual representations of grouped demographic and operational records."
-        ]
-      },
-      {
-        moduleNumber: 3,
-        title: "Probability & Statistical Distribution Graphs",
-        term: "Midterm",
-        topics: [
-          "Classical probability, compound events, and conditional probabilities",
-          "Grouped frequency distributions with class boundaries and intervals",
-          "Statistical graphs: Histograms, Frequency Polygons, and Ogive curves"
-        ],
-        outcomes: [
-          "Analyze distribution curves and probability metrics across tabular data."
-        ]
-      },
-      {
-        moduleNumber: 4,
-        title: "Pivot Tables, Pivot Charts & Dashboard Slicers",
-        term: "Midterm",
-        topics: [
-          "Dynamic data pivoting and multidimensional aggregation",
-          "Building Pivot Charts across revenue, quantity, unit cost, and expenses",
-          "Configuring interactive Excel Slicers for multi-tier executive dashboards"
-        ],
-        outcomes: [
-          "Deliver interactive corporate-grade reporting dashboards with cross-filtering."
-        ]
-      },
-      {
-        moduleNumber: 5,
-        title: "Python Programming & Google Colab Environment",
-        term: "Final",
-        topics: [
-          "Introduction to Google Colab and cloud-based Python runtimes",
-          "Python list creation, indexing, slicing, mutation, and built-in methods",
-          "Tuples, nested tuples, and key-value dictionary hashing"
-        ],
-        outcomes: [
-          "Write clean, modular Python scripts to parse and transform structured data collections."
-        ]
-      },
-      {
-        moduleNumber: 6,
-        title: "Exploratory Data Analysis with Pandas & Matplotlib",
-        term: "Final",
-        topics: [
-          "Reading and parsing CSV files using Pandas DataFrames",
-          "Matplotlib visualization engine: line plots, scatter plots, bar charts, and subplots",
-          "Synthesizing exploratory data analysis insights for decision-making"
-        ],
-        outcomes: [
-          "Engineer complete data visualization workflows from raw CSV datasets to publication-ready plots."
-        ]
-      }
-    ],
-    gradingSystem: [
-      { component: "Classroom Activities & Seatworks", percentage: "20%", details: "Classroom outputs, problem sets, and practical seatworks" },
-      { component: "Laboratory Activities", percentage: "25%", details: "Hands-on Excel workbooks and Python Colab notebooks" },
-      { component: "Quizzes & Evaluative Proofs", percentage: "15%", details: "Term quizzes administered via Microsoft Teams / Forms" },
-      { component: "Projects & Performance Tasks", percentage: "20%", details: "Prelim and Midterm analytical dashboard projects" },
-      { component: "Major Term Examinations", percentage: "20%", details: "Prelim, Midterm, and Final comprehensive assessments" }
-    ]
-  },
-
   // 5. CLASSROOM ACTIVITIES AND EXERCISES
   classroomActivities: [
     {
@@ -723,46 +562,6 @@ plt.show()`,
       imagePlaceholderNote: "Screenshot of turned-in Prelim Examination on MS Teams.",
       defaultImageSrc: "./assets/coursework/prelim-exam.png",
       tags: ["Prelim Examination", "Departmental Exam", "Verified Completion"]
-    },
-    {
-      id: "exam-2",
-      sectionNumber: 2,
-      title: "ITC C503 — Midterm Examination Result",
-      category: "Examination",
-      term: "Midterm",
-      date: "October 14, 2026",
-      score: "50 / 50",
-      instructions: "Departmental midterm examination testing probability theory, frequency polygons, ogive curves, and pivot table dashboard architectures.",
-      problemStatement: "Rigorous assessment of intermediate statistical modeling, probability problem sets, and multi-dimensional pivot configurations.",
-      procedure: [
-        "Executed calculations for continuous distribution tables and cumulative ogive metrics.",
-        "Analyzed multi-field pivot table scenarios and slicer connections.",
-        "Turned in completed examination response on institutional portal."
-      ],
-      explanation: "Exhibited strong analytical capability across probability modeling and dynamic spreadsheet reporting.",
-      imagePlaceholderNote: "Screenshot of turned-in Midterm Examination on MS Teams.",
-      defaultImageSrc: "./assets/coursework/midterm-project.png",
-      tags: ["Midterm Examination", "Probability Modeling", "Pivot Architectures"]
-    },
-    {
-      id: "exam-3",
-      sectionNumber: 3,
-      title: "ITC C503 — Final Term Comprehensive Examination",
-      category: "Examination",
-      term: "Final",
-      date: "November 6, 2026",
-      score: "50 / 50",
-      instructions: "Capstone departmental examination testing Python programming in Google Colab, sequence data structures, dictionary mapping, and Pandas/Matplotlib visualization pipelines.",
-      problemStatement: "Final evaluative milestone measuring end-to-end computational and statistical data science competencies.",
-      procedure: [
-        "Solved programming analysis questions involving list comprehension and dictionary lookups.",
-        "Interpreted Matplotlib and Pandas code snippets to determine plot outputs.",
-        "Finalized examination submission within official examination period."
-      ],
-      explanation: "Successfully completed final course examination, fulfilling all evaluative criteria for ITC C503.",
-      imagePlaceholderNote: "Screenshot of turned-in Final Examination on MS Teams.",
-      defaultImageSrc: "./assets/coursework/final-quiz-1.png",
-      tags: ["Final Examination", "Python Data Science", "Course Capstone"]
     }
   ],
 
@@ -774,19 +573,4 @@ plt.show()`,
     futureApplication: "The statistical modeling, spreadsheet dashboard engineering, and Python data visualization skills I developed in this course form a vital foundation for my career as an IT professional. Whether developing front-end software systems that interface with analytics APIs, designing business intelligence reporting tools, or conducting data-driven software testing, the analytical mindset and computational rigor acquired in ITC C503 will directly enhance my professional work."
   },
 
-  // 11. COURSE SUMMARY
-  courseSummary: {
-    overview: "ITC C503 (IT Elective 2: Data Science and Analytics) has provided an enriching, rigorous academic journey through the principles of data management, statistical calculation, and computational analysis. Across 18 academic weeks, I successfully completed all prescribed seatworks, hands-on laboratory exercises, evaluative quizzes, major dashboard projects, and departmental examinations.",
-    keyMilestones: [
-      "Mastery of descriptive statistics and formula automation in Microsoft Excel",
-      "Construction of Grouped Frequency Distribution Tables, Histograms, and Ogives",
-      "Engineering of interactive multi-tier Pivot Table and Slicer reporting dashboards",
-      "Development of Python programming competencies using Google Colab",
-      "Implementation of algorithmic sequence and dictionary data structure operations",
-      "Creation of exploratory data analysis charts with Pandas and Matplotlib",
-      "100% completion of all classroom, laboratory, quiz, project, and exam requirements"
-    ],
-    closingStatement: "This class portfolio stands as verified academic documentation of my learning journey, practical competencies, and dedication to excellence in Information Technology and Data Science at Jose Rizal University."
-  }
 };
-

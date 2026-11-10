@@ -3,14 +3,11 @@ import { portfolioData } from './data/portfolioData';
 import { SectionItem } from './types/portfolio';
 import { Header } from './components/Header';
 import { CoverPage } from './components/CoverPage';
-import { TableOfContents } from './components/TableOfContents';
 import { StudentProfile } from './components/StudentProfile';
-import { CourseSyllabus } from './components/CourseSyllabus';
 import { ActivityCard } from './components/ActivityCard';
 import { LearningReflection } from './components/LearningReflection';
-import { CourseSummary } from './components/CourseSummary';
 import { LightboxModal } from './components/LightboxModal';
-import { ImageManagerModal } from './components/ImageManagerModal';
+import { courseworkFiles } from './data/courseworkFiles';
 import { ArrowUp, ExternalLink } from 'lucide-react';
 
 export default function App() {
@@ -23,17 +20,9 @@ export default function App() {
     }
   });
 
-  const [images, setImages] = useState<Record<string, string>>(() => {
-    try {
-      const saved = localStorage.getItem('dayer_portfolio_images');
-      return saved ? JSON.parse(saved) : {};
-    } catch {
-      return {};
-    }
-  });
-
   // Filter & Search states
   const [activeTerm, setActiveTerm] = useState<string>('All');
+  const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const [lightboxState, setLightboxState] = useState<{
@@ -43,7 +32,6 @@ export default function App() {
     caption?: string;
   }>({ isOpen: false, src: '', title: '' });
 
-  const [imageManagerOpen, setImageManagerOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -53,71 +41,49 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
-    try { localStorage.setItem('dayer_portfolio_images', JSON.stringify(images)); } catch { /* noop */ }
-  }, [images]);
-
-  useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 400);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleImageChange = (id: string, newSrc: string | null) => {
-    setImages(prev => {
-      const updated = { ...prev };
-      if (newSrc) updated[id] = newSrc;
-      else delete updated[id];
-      return updated;
-    });
-  };
-
   const handleOpenLightbox = (src: string, title: string, caption?: string) => {
     setLightboxState({ isOpen: true, src, title, caption });
   };
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const allCardItems = useMemo<SectionItem[]>(() => [
-    ...portfolioData.classroomActivities,
-    ...portfolioData.laboratoryActivities,
-    ...portfolioData.quizzesAndAssessments,
-    ...portfolioData.projectsAndPerformanceTasks,
-    ...portfolioData.examinationResults,
-  ], []);
-
-  const imageStats = {
-    total: allCardItems.length,
-    uploaded: allCardItems.filter(item => Boolean(images[item.id] || item.defaultImageSrc)).length,
-  };
-
   // Filter items helper
-  const filterItems = (items: SectionItem[]) => {
+  const filterItems = (items: SectionItem[], category: string) => {
     return items.filter(item => {
       const matchesTerm = activeTerm === 'All' || item.term === activeTerm;
+      const matchesCategory = activeCategory === 'All' || activeCategory === category;
       const q = searchQuery.toLowerCase().trim();
-      if (!q) return matchesTerm;
+      if (!q) return matchesTerm && matchesCategory;
       const matchesSearch = 
         item.title.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q) ||
         (item.instructions && item.instructions.toLowerCase().includes(q)) ||
         (item.problemStatement && item.problemStatement.toLowerCase().includes(q)) ||
         (item.tags && item.tags.some(t => t.toLowerCase().includes(q))) ||
         (item.codeSnippet && item.codeSnippet.toLowerCase().includes(q));
-      return matchesTerm && matchesSearch;
+      return matchesTerm && matchesCategory && matchesSearch;
     });
   };
 
-  const filteredClassroom = useMemo(() => filterItems(portfolioData.classroomActivities), [activeTerm, searchQuery]);
-  const filteredLaboratory = useMemo(() => filterItems(portfolioData.laboratoryActivities), [activeTerm, searchQuery]);
-  const filteredQuizzes = useMemo(() => filterItems(portfolioData.quizzesAndAssessments), [activeTerm, searchQuery]);
-  const filteredProjects = useMemo(() => filterItems(portfolioData.projectsAndPerformanceTasks), [activeTerm, searchQuery]);
-  const filteredExams = useMemo(() => filterItems(portfolioData.examinationResults), [activeTerm, searchQuery]);
+  const filteredClassroom = useMemo(() => filterItems(portfolioData.classroomActivities, 'Activities'), [activeTerm, activeCategory, searchQuery]);
+  const filteredLaboratory = useMemo(() => filterItems(portfolioData.laboratoryActivities, 'Activities'), [activeTerm, activeCategory, searchQuery]);
+  const filteredQuizzes = useMemo(() => filterItems(portfolioData.quizzesAndAssessments, 'Quizzes'), [activeTerm, activeCategory, searchQuery]);
+  const filteredProjects = useMemo(() => filterItems(portfolioData.projectsAndPerformanceTasks, 'Projects'), [activeTerm, activeCategory, searchQuery]);
+  const filteredExams = useMemo(() => filterItems(portfolioData.examinationResults, 'Examinations'), [activeTerm, activeCategory, searchQuery]);
+  const hasCourseworkResults = [
+    filteredClassroom.length,
+    filteredLaboratory.length,
+    filteredQuizzes.length,
+    filteredProjects.length,
+    filteredExams.length,
+  ].some(count => count > 0);
 
   // Editorial Section Heading
   const SectionHeading = ({ num, title, count }: { num: string; title: string; count?: string }) => (
-    <div className="flex items-center justify-between border-b border-slate-300 dark:border-slate-800 pb-3 mb-6">
+    <div className="mb-6 flex items-center justify-between border-b border-slate-300 pb-3 dark:border-slate-800">
       <div className="flex items-center gap-3">
         <span className="font-condensed text-3xl sm:text-4xl font-black text-slate-400">{num}</span>
         <h2 className="font-condensed text-2xl sm:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-wider">
@@ -125,7 +91,7 @@ export default function App() {
         </h2>
       </div>
       {count && (
-        <span className="text-xs font-mono text-slate-500">
+        <span className="text-sm text-slate-600 dark:text-slate-300">
           {count}
         </span>
       )}
@@ -138,10 +104,10 @@ export default function App() {
       <Header
         theme={theme}
         onToggleTheme={() => setTheme(p => p === 'dark' ? 'light' : 'dark')}
-        onOpenImageManager={() => setImageManagerOpen(true)}
-        imageStats={imageStats}
         activeTerm={activeTerm}
         onSelectTerm={setActiveTerm}
+        activeCategory={activeCategory}
+        onSelectCategory={setActiveCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />
@@ -150,15 +116,16 @@ export default function App() {
       <main className="flex-1 max-w-[1400px] w-full mx-auto px-4 sm:px-8 lg:px-12 py-8 md:py-12">
 
         {/* Filter Indicator (if active) */}
-        {(activeTerm !== 'All' || searchQuery) && (
+        {(activeTerm !== 'All' || activeCategory !== 'All' || searchQuery) && (
           <div className="no-print mb-8 p-3 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800/60 text-xs text-slate-700 dark:text-slate-300 flex items-center justify-between font-mono">
             <div>
               <span className="font-bold text-sky-600 dark:text-sky-400">Filtered: </span>
               {activeTerm !== 'All' && <span className="mr-3">Term: <strong>{activeTerm}</strong></span>}
+              {activeCategory !== 'All' && <span className="mr-3">Category: <strong>{activeCategory}</strong></span>}
               {searchQuery && <span>Keyword: "<strong>{searchQuery}</strong>"</span>}
             </div>
             <button
-              onClick={() => { setActiveTerm('All'); setSearchQuery(''); }}
+              onClick={() => { setActiveTerm('All'); setActiveCategory('All'); setSearchQuery(''); }}
               className="text-xs text-sky-600 dark:text-sky-400 hover:underline font-bold cursor-pointer"
             >
               Reset
@@ -169,105 +136,87 @@ export default function App() {
         {/* 1. Cover Page */}
         <CoverPage data={portfolioData} />
 
-        {/* 2. Table of Contents */}
-        <div className="print-page-break">
-          <TableOfContents onNavigate={scrollToSection} imageStats={imageStats} />
-        </div>
-
-        {/* 3. Student Profile */}
+        {/* 2. Student Profile */}
         <div className="print-page-break">
           <StudentProfile data={portfolioData} onOpenLightbox={handleOpenLightbox} />
         </div>
 
-        {/* 4. Course Syllabus */}
-        <div className="print-page-break">
-          <CourseSyllabus data={portfolioData} />
-        </div>
-
-        {/* 5. Classroom Activities and Exercises */}
-        <section id="classroom-activities" className="mb-14 scroll-mt-24 print-page-break">
-          <SectionHeading num="05" title="Classroom Activities and Exercises" count={`${filteredClassroom.length} Items`} />
+        {/* 3. Classroom Activities and Exercises */}
+        {filteredClassroom.length > 0 && <section id="classroom-activities" className="mb-14 scroll-mt-24 print-page-break">
+          <SectionHeading num="03" title="Classroom Activities and Exercises" count={`${filteredClassroom.length} Items`} />
           {filteredClassroom.map(item => (
             <ActivityCard
               key={item.id}
               item={item}
-              imageSrc={images[item.id]}
-              onImageChange={handleImageChange}
+              files={courseworkFiles[item.id]}
               onOpenLightbox={handleOpenLightbox}
-              sectionPrefix="Activity"
             />
           ))}
-        </section>
+        </section>}
 
-        {/* 6. Laboratory Activities */}
-        <section id="laboratory-activities" className="mb-14 scroll-mt-24 print-page-break">
-          <SectionHeading num="06" title="Laboratory Activities" count={`${filteredLaboratory.length} Labs`} />
+        {/* 4. Laboratory Activities */}
+        {filteredLaboratory.length > 0 && <section id="laboratory-activities" className="mb-14 scroll-mt-24 print-page-break">
+          <SectionHeading num="04" title="Laboratory Activities" count={`${filteredLaboratory.length} Labs`} />
           {filteredLaboratory.map(item => (
             <ActivityCard
               key={item.id}
               item={item}
-              imageSrc={images[item.id]}
-              onImageChange={handleImageChange}
+              files={courseworkFiles[item.id]}
               onOpenLightbox={handleOpenLightbox}
-              sectionPrefix="Lab"
             />
           ))}
-        </section>
+        </section>}
 
-        {/* 7. Quizzes and Assessments */}
-        <section id="quizzes-assessments" className="mb-14 scroll-mt-24 print-page-break">
-          <SectionHeading num="07" title="Quizzes and Assessments" count={`${filteredQuizzes.length} Proofs`} />
+        {/* 5. Quizzes and Assessments */}
+        {filteredQuizzes.length > 0 && <section id="quizzes-assessments" className="mb-14 scroll-mt-24 print-page-break">
+          <SectionHeading num="05" title="Quizzes and Assessments" count={`${filteredQuizzes.length} Proofs`} />
           {filteredQuizzes.map(item => (
             <ActivityCard
               key={item.id}
               item={item}
-              imageSrc={images[item.id]}
-              onImageChange={handleImageChange}
+              files={courseworkFiles[item.id]}
               onOpenLightbox={handleOpenLightbox}
-              sectionPrefix="Quiz"
             />
           ))}
-        </section>
+        </section>}
 
-        {/* 8. Projects and Performance Tasks */}
-        <section id="projects-performance-tasks" className="mb-14 scroll-mt-24 print-page-break">
-          <SectionHeading num="08" title="Projects and Performance Tasks" count={`${filteredProjects.length} Deliverables`} />
+        {/* 6. Projects and Performance Tasks */}
+        {filteredProjects.length > 0 && <section id="projects-performance-tasks" className="mb-14 scroll-mt-24 print-page-break">
+          <SectionHeading num="06" title="Projects and Performance Tasks" count={`${filteredProjects.length} Deliverables`} />
           {filteredProjects.map(item => (
             <ActivityCard
               key={item.id}
               item={item}
-              imageSrc={images[item.id]}
-              onImageChange={handleImageChange}
+              files={courseworkFiles[item.id]}
               onOpenLightbox={handleOpenLightbox}
-              sectionPrefix="Project"
             />
           ))}
-        </section>
+        </section>}
 
-        {/* 9. Examination Results */}
-        <section id="examination-results" className="mb-14 scroll-mt-24 print-page-break">
-          <SectionHeading num="09" title="Examination Results" count={`${filteredExams.length} Exams`} />
+        {/* 7. Examination Results */}
+        {filteredExams.length > 0 && <section id="examination-results" className="mb-14 scroll-mt-24 print-page-break">
+          <SectionHeading num="07" title="Examination Results" count={`${filteredExams.length} Exams`} />
           {filteredExams.map(item => (
             <ActivityCard
               key={item.id}
               item={item}
-              imageSrc={images[item.id]}
-              onImageChange={handleImageChange}
+              files={courseworkFiles[item.id]}
               onOpenLightbox={handleOpenLightbox}
-              sectionPrefix="Exam"
             />
           ))}
-        </section>
+        </section>}
 
-        {/* 10. Learning Reflection */}
+        {!hasCourseworkResults && (activeTerm !== 'All' || activeCategory !== 'All' || searchQuery.trim()) && (
+          <p className="mb-14 rounded-xl border border-slate-200 bg-white p-6 text-center text-base text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+            No coursework matches these filters.
+          </p>
+        )}
+
+        {/* 8. Learning Reflection */}
         <div className="print-page-break">
           <LearningReflection data={portfolioData} />
         </div>
 
-        {/* 11. Course Learning Summary */}
-        <div className="print-page-break">
-          <CourseSummary data={portfolioData} />
-        </div>
       </main>
 
       {/* Editorial Footer */}
@@ -312,15 +261,6 @@ export default function App() {
         caption={lightboxState.caption}
       />
 
-      {/* Image Manager Modal */}
-      <ImageManagerModal
-        isOpen={imageManagerOpen}
-        onClose={() => setImageManagerOpen(false)}
-        allItems={allCardItems}
-        images={images}
-        onImageChange={handleImageChange}
-        onNavigateToCard={scrollToSection}
-      />
     </div>
   );
 }

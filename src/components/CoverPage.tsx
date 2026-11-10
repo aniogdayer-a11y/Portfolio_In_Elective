@@ -6,20 +6,6 @@ interface CoverPageProps {
 }
 
 export const CoverPage: React.FC<CoverPageProps> = ({ data }) => {
-  const handlePrint = () => {
-    const originalTitle = document.title;
-    document.title = "ITCC503_ClassPortfolio_Aniog_Dayer";
-    window.print();
-    setTimeout(() => {
-      document.title = originalTitle;
-    }, 1000);
-  };
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section 
       id="cover-page" 
@@ -132,28 +118,6 @@ export const CoverPage: React.FC<CoverPageProps> = ({ data }) => {
               {data.course.semester}
             </p>
           </div>
-        </div>
-      </div>
-
-      {/* 5. MINIMALIST ACTION CONTROLS */}
-      <div className="no-print pt-2 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
-        <div className="text-slate-500 text-[11px]">
-          STUDENT'S CLASS PORTFOLIO • VIRGINIA B. LOYOLA, MIT
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => scrollTo('table-of-contents')}
-            className="px-4 py-2 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold transition-colors cursor-pointer"
-          >
-            Table of Contents
-          </button>
-          <button
-            onClick={handlePrint}
-            className="px-5 py-2 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-bold transition-all cursor-pointer shadow-sm"
-          >
-            Save to PDF (1-inch Margins)
-          </button>
         </div>
       </div>
     </section>

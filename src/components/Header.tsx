@@ -4,10 +4,10 @@ import { Sun, Moon, Menu, X, ChevronDown, Search } from 'lucide-react';
 interface HeaderProps {
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
-  onOpenImageManager: () => void;
-  imageStats: { total: number; uploaded: number };
   activeTerm: string;
   onSelectTerm: (term: string) => void;
+  activeCategory: string;
+  onSelectCategory: (category: string) => void;
   searchQuery: string;
   onSearchChange: (q: string) => void;
 }
@@ -15,10 +15,10 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   theme,
   onToggleTheme,
-  onOpenImageManager,
-  imageStats,
   activeTerm,
   onSelectTerm,
+  activeCategory,
+  onSelectCategory,
   searchQuery,
   onSearchChange,
 }) => {
@@ -60,13 +60,6 @@ export const Header: React.FC<HeaderProps> = ({
     };
   }, [courseworkOpen, mobileMenuOpen]);
 
-  const handlePrint = () => {
-    const originalTitle = document.title;
-    document.title = "ITCC503_ClassPortfolio_Aniog_Dayer";
-    window.print();
-    setTimeout(() => { document.title = originalTitle; }, 1000);
-  };
-
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setCourseworkOpen(false);
@@ -79,12 +72,11 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const courseworkItems = [
-    { num: "04", label: "Syllabus", href: "#course-syllabus", targetId: "course-syllabus" },
-    { num: "05", label: "Activities", href: "#classroom-activities", targetId: "classroom-activities" },
-    { num: "06", label: "Laboratory Activities", href: "#laboratory-activities", targetId: "laboratory-activities" },
-    { num: "07", label: "Quizzes", href: "#quizzes-assessments", targetId: "quizzes-assessments" },
-    { num: "08", label: "Projects", href: "#projects-performance-tasks", targetId: "projects-performance-tasks" },
-    { num: "09", label: "Examinations", href: "#examination-results", targetId: "examination-results" },
+    { num: "03", label: "Activities", href: "#classroom-activities", targetId: "classroom-activities" },
+    { num: "04", label: "Laboratory Activities", href: "#laboratory-activities", targetId: "laboratory-activities" },
+    { num: "05", label: "Quizzes", href: "#quizzes-assessments", targetId: "quizzes-assessments" },
+    { num: "06", label: "Projects", href: "#projects-performance-tasks", targetId: "projects-performance-tasks" },
+    { num: "07", label: "Examinations", href: "#examination-results", targetId: "examination-results" },
   ];
 
   return (
@@ -108,7 +100,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Simplified Main Navigation (Desktop): Home | About | Coursework ▼ | Reflection */}
         <nav
-          className="hidden md:flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-medium tracking-wide"
+          className="hidden md:flex items-center gap-1 sm:gap-2 text-sm font-medium tracking-wide"
           aria-label="Main Navigation"
         >
           <a
@@ -196,28 +188,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Clean Controls (No icon clutter) */}
-        <div className="flex items-center gap-2 shrink-0 font-mono text-xs">
-          {/* Screenshot Slots */}
-          <button
-            onClick={onOpenImageManager}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-slate-200 border border-slate-700 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
-            title="Manage screenshot slots"
-          >
-            <span>Slots</span>
-            <span className="text-[11px] text-slate-400">
-              {imageStats.uploaded}/{imageStats.total}
-            </span>
-          </button>
-
-          {/* Save PDF Export */}
-          <button
-            onClick={handlePrint}
-            className="px-3.5 py-1.5 rounded-full bg-sky-600 hover:bg-sky-500 text-white font-semibold shadow-sm transition-all cursor-pointer"
-            title="Save as PDF (1-inch margins)"
-          >
-            Save PDF
-          </button>
-
+        <div className="flex items-center gap-2 shrink-0 text-sm">
           {/* Theme Toggle Button */}
           <button
             onClick={onToggleTheme}
@@ -242,8 +213,8 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="border-t border-white/5 bg-[#0D162D]">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-2 flex items-center gap-3">
-          <div role="search" className="relative min-w-0 flex-1">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-2 flex flex-wrap items-center gap-2 sm:gap-3">
+          <div role="search" className="relative min-w-0 flex-1 basis-full sm:basis-auto">
             <label htmlFor="portfolio-search" className="sr-only">Search portfolio coursework</label>
             <Search size={15} aria-hidden="true" className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
             <input
@@ -252,21 +223,36 @@ export const Header: React.FC<HeaderProps> = ({
               value={searchQuery}
               onChange={(event) => onSearchChange(event.target.value)}
               placeholder="Search coursework, topics, or code"
-              className="w-full rounded-lg border border-slate-700 bg-[#0B1327] py-2 pl-9 pr-3 text-xs text-white placeholder:text-slate-500 outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30"
+              className="w-full rounded-lg border border-slate-700 bg-[#0B1327] py-2 pl-9 pr-3 text-sm text-white placeholder:text-slate-400 outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30"
             />
           </div>
-          <div className="shrink-0">
+          <div className="min-w-0 flex-1 sm:flex-none">
             <label htmlFor="portfolio-term" className="sr-only">Filter coursework by term</label>
             <select
               id="portfolio-term"
               value={activeTerm}
               onChange={(event) => onSelectTerm(event.target.value)}
-              className="w-28 sm:w-36 rounded-lg border border-slate-700 bg-[#0B1327] px-2.5 py-2 text-xs text-slate-200 outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30"
+              className="w-full sm:w-36 rounded-lg border border-slate-700 bg-[#0B1327] px-2.5 py-2 text-sm text-slate-200 outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30"
             >
               <option value="All">All terms</option>
               <option value="Prelim">Prelim</option>
-              <option value="Midterm">Midterm</option>
-              <option value="Final">Final</option>
+              <option value="Midterm">Midterms</option>
+              <option value="Final">Finals</option>
+            </select>
+          </div>
+          <div className="min-w-0 flex-1 sm:flex-none">
+            <label htmlFor="portfolio-category" className="sr-only">Filter coursework by category</label>
+            <select
+              id="portfolio-category"
+              value={activeCategory}
+              onChange={(event) => onSelectCategory(event.target.value)}
+              className="w-full sm:w-48 rounded-lg border border-slate-700 bg-[#0B1327] px-2.5 py-2 text-sm text-slate-200 outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30"
+            >
+              <option value="All">All categories</option>
+              <option value="Activities">Activities</option>
+              <option value="Quizzes">Quizzes</option>
+              <option value="Projects">Projects</option>
+              <option value="Examinations">Examinations</option>
             </select>
           </div>
         </div>
@@ -338,13 +324,6 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400 px-2">
-            <a
-              href="#table-of-contents"
-              onClick={(e) => handleNavClick(e, 'table-of-contents')}
-              className="hover:text-white underline underline-offset-2"
-            >
-              Table of Contents
-            </a>
             <a
               href="#course-summary"
               onClick={(e) => handleNavClick(e, 'course-summary')}

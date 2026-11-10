@@ -40,7 +40,7 @@ export const LearningReflection: React.FC<LearningReflectionProps> = ({ data }) 
       {/* Editorial Section Header */}
       <div className="flex items-baseline justify-between border-b border-slate-300 dark:border-slate-800 pb-3 mb-8">
         <div className="flex items-baseline gap-3">
-          <span className="font-condensed text-4xl sm:text-5xl font-black text-slate-400">10</span>
+          <span className="font-condensed text-4xl sm:text-5xl font-black text-slate-400">08</span>
           <h2 className="font-condensed text-2xl sm:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-wider">
             Learning Reflection
           </h2>

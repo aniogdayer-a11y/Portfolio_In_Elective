@@ -11,10 +11,10 @@
 
 ## Portfolio features
 
-- Eleven academic sections with in-page navigation.
+- Ten academic sections with in-page navigation.
 - Search and term filters for coursework submissions.
-- Light and dark themes, screenshot uploads, and image preview.
-- Print layout configured for letter paper with one-inch margins.
+- Light and dark themes, bundled coursework files, and image preview.
+- Print layout configured for letter paper with one-inch margins; use the browser's print command to save a PDF.
 
 ---
 
@@ -24,20 +24,19 @@ This Electronic Portfolio has been created in strict accordance with the **Indiv
 
 ### Organization & Sequence of Sections
 1. **Cover Page:** Full institutional masthead, course identification, student profile, instructor credentials, academic year & semester.
-2. **Table of Contents:** Sequential list of all 11 chapters with live jump links and page markers.
-3. **Student Profile:** Complete curriculum details, student number, formal portrait & JRU ID, educational background, interests, trainings, skills matrix, and a polished 5–7 sentence personal introduction.
-4. **Course Syllabus / Course Outline:** Course description, learning outcomes, six modules across Prelim, Midterm, and Final, and grading weights.
-5. **Classroom Activities and Exercises:** Chronological compilation of seat works, analytical comparisons, and theoretical problem sets.
-6. **Laboratory Activities:** Complete laboratory exercises containing Activity Number & Title, Instructions/Problem Statements, Source Code & Procedures, Screenshot Slot with Drag-and-Drop / Upload, and Brief Explanation of Results.
-7. **Quizzes and Assessments:** Chronological records of written quizzes, practical assessments, and faculty scoring rubrics.
-8. **Projects and Performance Tasks:** Excel data analysis workbook and interactive Pivot Table dashboard.
-9. **Examination Results:** Preliminary, Midterm, and Final examination records.
-10. **Learning Reflection:** Critical self-reflection systematically answering all 4 prescribed questions:
+2. **Student Profile:** Student number, formal portrait & JRU ID, and a polished 5–7 sentence personal introduction.
+3. **Course Syllabus / Course Outline:** Course technical competencies, six modules across Prelim, Midterm, and Final, and grading weights.
+4. **Classroom Activities and Exercises:** Chronological compilation of seat works, analytical comparisons, and theoretical problem sets.
+5. **Laboratory Activities:** Complete laboratory exercises containing Activity Number & Title, Instructions/Problem Statements, Source Code & Procedures, linked original files, screenshots, and a Brief Explanation of Results.
+6. **Quizzes and Assessments:** Chronological records of written quizzes, practical assessments, and faculty scoring rubrics.
+7. **Projects and Performance Tasks:** Excel data analysis workbook and interactive Pivot Table dashboard.
+8. **Examination Results:** Preliminary, Midterm, and Final examination records.
+9. **Learning Reflection:** Critical self-reflection systematically answering all 4 prescribed questions:
     - What important knowledge and skills did you learn?
     - What activities or topics were most challenging?
     - How did you overcome the difficulties?
     - How will you apply the knowledge and skills you acquired?
-11. **Course Learning Summary:** Summative capstone synthesis of learning achievements, discipline, and accountability.
+10. **Course Learning Summary:** Summative capstone synthesis of learning achievements, discipline, and accountability.
 
 ---
 
@@ -56,18 +55,13 @@ As required by the submission guidelines:
 - **Margins:** 1-inch margins on all sides.
 - **Filename:** `ITCC503_ClassPortfolio_Aniog_Dayer.pdf`.
 - **How to Export:**
-  1. Click **"Save PDF"** in the top navigation bar.
+  1. Press **Ctrl+P** (or **Cmd+P** on Mac).
   2. Select **"Save as PDF"** as the destination.
   3. Under Options, ensure **Background graphics** is checked.
-  4. The filename will default to `ITCC503_ClassPortfolio_Aniog_Dayer.pdf`.
+  4. Save as `ITCC503_ClassPortfolio_Aniog_Dayer.pdf`.
 
 ---
 
-## 📸 Managing Screenshots & Pictures
+## 📁 Coursework files
 
-Each card is pre-configured with an **Interactive Picture Slot**:
-- **Drag-and-Drop:** Simply drag any screenshot file onto the card's placeholder.
-- **File Picker:** Click **"Select & Upload Picture"** to choose a screenshot from your computer.
-- **Picture Slots Assistant:** Click the **"Picture Slots"** button in the header to view all card slots in one modal, track completion progress, and upload images directly.
-- **Automatic Persistence:** Uploaded pictures are saved in browser storage (`localStorage`) and remain after a refresh in the same browser.
-- **Fullscreen Lightbox:** Click any image to view it in high resolution with Zoom controls.
+Original files from `PRELIM`, `MIDTERM`, and `FINALS` are linked from their matching activity, quiz, project, or exam cards. Images are previewed directly on each card. Expand **View PDF** to read a document in the page, or download it. Excel workbooks, notebooks, and datasets have download buttons; download workbooks to open them in Excel or Google Sheets. The portfolio does not accept uploads.

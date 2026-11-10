@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "node -e \"const fs=require('fs'); fs.copyFileSync('dist/index.dev.html', 'index.html'); fs.copyFileSync('dist/index.dev.html', 'PORTFOLIO.html'); fs.copyFileSync('dist/index.dev.html', 'dist/index.html'); fs.cpSync('public/assets', 'assets', {recursive: true}); fs.copyFileSync('dist/index.dev.html', 'docs/index.html'); fs.cpSync('public/assets', 'docs/assets', {recursive: true}); console.log('✓ Synced production singlefile bundles to index.html and PORTFOLIO.html');\"",
+    "postbuild": "node -e \"const fs=require('fs'); fs.copyFileSync('dist/index.dev.html', 'index.html'); fs.copyFileSync('dist/index.dev.html', 'PORTFOLIO.html'); fs.copyFileSync('dist/index.dev.html', 'dist/index.html'); fs.cpSync('public/assets', 'assets', {recursive: true}); fs.copyFileSync('dist/index.dev.html', 'docs/index.html'); fs.cpSync('public/assets', 'docs/assets', {recursive: true}); for (const term of ['PRELIM', 'MIDTERM', 'FINALS']) fs.cpSync(term, 'dist/' + term, {recursive: true}); console.log('✓ Synced production bundle and all term coursework files');\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,4 +26,3 @@
     "vite-plugin-singlefile": "^2.3.4"
   }
 }
-

@@ -11,6 +11,21 @@ export default defineConfig({
     react(),
     tailwindcss(),
     viteSingleFile(),
+    {
+      name: 'local-root-entrypoint',
+      configureServer(server) {
+        server.middlewares.use((request, response, next) => {
+          if (request.url === '/') {
+            response.statusCode = 302
+            response.setHeader('Location', '/index.dev.html')
+            response.end()
+            return
+          }
+
+          next()
+        })
+      },
+    },
   ],
   build: {
     rollupOptions: {
