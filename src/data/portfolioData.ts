@@ -6,7 +6,7 @@ export const portfolioData: PortfolioData = {
     campus: "Mandaluyong Campus",
     college: "College of Computer Studies",
     department: "Information Technology Department",
-    logoUrl: "/assets/jru-id.png"
+    logoUrl: "./assets/jru-id.png"
   },
   course: {
     code: "ITC C503",
@@ -28,8 +28,8 @@ export const portfolioData: PortfolioData = {
     email: "aniog.dayer@gmail.com",
     phone: "0966 177 6821",
     location: "Mandaluyong / Pasig, Metro Manila, Philippines",
-    profilePhotoUrl: "/assets/dayer-suit-portrait.png",
-    jruIdUrl: "/assets/jru-id.png",
+    profilePhotoUrl: "./assets/dayer-suit-portrait.png",
+    jruIdUrl: "./assets/jru-id.png",
     personalIntro: [
       "I am Dayer C. Aniog, an Information Technology student at Jose Rizal University specializing in Data Analytics, Data Science, and modern Web Engineering.",
       "Throughout this course, I developed hands-on competencies in advanced spreadsheet modeling, descriptive statistics, multi-variable probability calculations, and data visualization.",
@@ -236,7 +236,7 @@ export const portfolioData: PortfolioData = {
       ],
       explanation: "Successfully computed descriptive statistical metrics and verified all calculation formulas without discrepancies.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Seatwork 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-seatwork-1.png",
+      defaultImageSrc: "./assets/coursework/prelim-seatwork-1.png",
       tags: ["Descriptive Statistics", "Excel Formulas", "Mean/Median/Mode"]
     },
     {
@@ -257,7 +257,7 @@ export const portfolioData: PortfolioData = {
       ],
       explanation: "Provided complete handwritten proofs and verified lowest-term fractional values for all assigned probability exercises.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Assignment 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-assignment-1.png",
+      defaultImageSrc: "./assets/coursework/midterm-assignment-1.png",
       tags: ["Probability", "Handwritten Solutions", "Lowest Terms"]
     },
     {
@@ -277,7 +277,7 @@ export const portfolioData: PortfolioData = {
       ],
       explanation: "Confirmed active academic co-curricular membership supporting professional development in information technology.",
       imagePlaceholderNote: "Screenshot of turned-in IT Organization Membership on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-it-org.png",
+      defaultImageSrc: "./assets/coursework/midterm-it-org.png",
       tags: ["JPCS", "Student Organization", "Co-Curricular"]
     },
     {
@@ -311,7 +311,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Verified core list indexing mechanics, mutable array properties, and runtime console output.",
       imagePlaceholderNote: "Screenshot of turned-in Final Seatwork 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/final-seatwork-1.png",
+      defaultImageSrc: "./assets/coursework/final-seatwork-1.png",
       tags: ["Python", "Google Colab", "Lists", "Indexing"]
     }
   ],
@@ -336,7 +336,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Organized raw real-estate records into structured sheets with visual formatting cues and separate category views.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Activity 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-activity-1.png",
+      defaultImageSrc: "./assets/coursework/prelim-activity-1.png",
       tags: ["Conditional Formatting", "Data Bars", "Excel Filtering", "Currency"]
     },
     {
@@ -357,7 +357,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Automated business logic evaluation using formula nesting, removing manual classification errors.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Activity 2 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-activity-2.png",
+      defaultImageSrc: "./assets/coursework/prelim-activity-2.png",
       tags: ["Logical Formulas", "Nested IF", "Excel Functions"]
     },
     {
@@ -378,7 +378,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Produced four clear statistical charts depicting frequency distribution patterns with accurate data labels.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Activity 3 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-activity-3.png",
+      defaultImageSrc: "./assets/coursework/prelim-activity-3.png",
       tags: ["Statistical Charts", "Frequency Distribution", "Data Labels"]
     },
     {
@@ -399,7 +399,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Successfully built structured frequency distribution tables validating total observation counts and probability sums.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Activity 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-activity-1.png",
+      defaultImageSrc: "./assets/coursework/midterm-activity-1.png",
       tags: ["Grouped Frequency", "Class Limits", "Cumulative Frequency"]
     },
     {
@@ -420,7 +420,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Visualized distribution shape, modal class, and cumulative percentiles through three coordinated statistical plots.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Activity 2 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-activity-2.png",
+      defaultImageSrc: "./assets/coursework/midterm-activity-2.png",
       tags: ["Histogram", "Frequency Polygon", "Ogive", "Statistical Graphs"]
     },
     {
@@ -441,7 +441,7 @@ print("Mutated numbers list:", numbers)`,
       ],
       explanation: "Delivered dynamic multi-sheet financial pivot models with automated slicers for executive analysis.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Activity 3 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-activity-3.png",
+      defaultImageSrc: "./assets/coursework/midterm-activity-3.png",
       tags: ["Pivot Tables", "Pivot Charts", "Excel Slicers", "Quarterly Reporting"]
     },
     {
@@ -474,7 +474,7 @@ print(f"Total Sales: {total}, Average: {average:.2f}")`,
       ],
       explanation: "Executed 20 sample Python scripts validating in-place list sorting, memory indexing, and statistical aggregations.",
       imagePlaceholderNote: "Screenshot of turned-in Final Activity 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/final-activity-1.png",
+      defaultImageSrc: "./assets/coursework/final-activity-1.png",
       tags: ["Python", "Google Colab", "Lists & Tuples", "Sorting"]
     },
     {
@@ -511,7 +511,7 @@ print("Frequency Map:", freq)`,
       ],
       explanation: "Engineered robust algorithmic functions handling nested data collections, dictionary lookups, and multi-condition evaluations.",
       imagePlaceholderNote: "Screenshot of turned-in Final Activity 2 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/final-activity-2.png",
+      defaultImageSrc: "./assets/coursework/final-activity-2.png",
       tags: ["Python Dictionaries", "Nested Tuples", "Frequency Mapping"]
     },
     {
@@ -547,7 +547,7 @@ plt.show()`,
       ],
       explanation: "Developed publication-ready graphical visualizations communicating time-series trends and comparative category metrics.",
       imagePlaceholderNote: "Screenshot of turned-in Final Activity 3 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/final-activity-3.png",
+      defaultImageSrc: "./assets/coursework/final-activity-3.png",
       tags: ["Matplotlib", "Pandas", "Data Visualization", "CSV Analysis"]
     }
   ],
@@ -571,7 +571,7 @@ plt.show()`,
       ],
       explanation: "Achieved perfect score demonstrating solid mastery of preliminary data science principles.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Quiz 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-quiz-1.png",
+      defaultImageSrc: "./assets/coursework/prelim-quiz-1.png",
       tags: ["Prelim Quiz", "Data Science Fundamentals", "MS Forms"]
     },
     {
@@ -591,7 +591,7 @@ plt.show()`,
       ],
       explanation: "Demonstrated accurate technical knowledge in spreadsheet analytics and formula implementation.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Quiz 2 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-quiz-2.png",
+      defaultImageSrc: "./assets/coursework/prelim-quiz-2.png",
       tags: ["Prelim Quiz", "Excel Analytics", "Formula Precision"]
     },
     {
@@ -611,7 +611,7 @@ plt.show()`,
       ],
       explanation: "Demonstrated high-level proficiency in frequency distribution calculations and statistical table construction.",
       imagePlaceholderNote: "Screenshot of graded Midterm Quiz 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-quiz-1.png",
+      defaultImageSrc: "./assets/coursework/midterm-quiz-1.png",
       tags: ["Midterm Quiz", "Frequency Distribution", "Verified Score"]
     },
     {
@@ -631,7 +631,7 @@ plt.show()`,
       ],
       explanation: "Confirmed thorough knowledge of enterprise spreadsheet pivoting and interactive dashboard mechanics.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Quiz 2 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-quiz-2.png",
+      defaultImageSrc: "./assets/coursework/midterm-quiz-2.png",
       tags: ["Midterm Quiz", "Pivot Tables", "Slicers"]
     },
     {
@@ -651,7 +651,7 @@ plt.show()`,
       ],
       explanation: "Demonstrated comprehensive understanding of Python programming concepts and data visualization libraries.",
       imagePlaceholderNote: "Screenshot of turned-in Final Quiz 1 on MS Teams.",
-      defaultImageSrc: "/assets/coursework/final-quiz-1.png",
+      defaultImageSrc: "./assets/coursework/final-quiz-1.png",
       tags: ["Final Quiz", "Python Programming", "Matplotlib"]
     }
   ],
@@ -676,7 +676,7 @@ plt.show()`,
       ],
       explanation: "Delivered a corporate-grade analytical workbook scoring 49/50, praised for clean data architecture and professional visual hierarchy.",
       imagePlaceholderNote: "Screenshot of returned Prelim Project on MS Teams showing 49/50 score.",
-      defaultImageSrc: "/assets/coursework/prelim-project.png",
+      defaultImageSrc: "./assets/coursework/prelim-project.png",
       tags: ["Prelim Project", "Excel Dashboard", "49/50 Score", "Data Analytics"]
     },
     {
@@ -697,7 +697,7 @@ plt.show()`,
       ],
       explanation: "Engineered an enterprise-grade interactive dashboard enabling dynamic multi-parameter slice-and-dice business reporting.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Project on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-project.png",
+      defaultImageSrc: "./assets/coursework/midterm-project.png",
       tags: ["Midterm Project", "Interactive Slicers", "Pivot Dashboard", "Enterprise"]
     }
   ],
@@ -721,7 +721,7 @@ plt.show()`,
       ],
       explanation: "Demonstrated complete mastery of preliminary course competencies with verified institutional submission.",
       imagePlaceholderNote: "Screenshot of turned-in Prelim Examination on MS Teams.",
-      defaultImageSrc: "/assets/coursework/prelim-exam.png",
+      defaultImageSrc: "./assets/coursework/prelim-exam.png",
       tags: ["Prelim Examination", "Departmental Exam", "Verified Completion"]
     },
     {
@@ -741,7 +741,7 @@ plt.show()`,
       ],
       explanation: "Exhibited strong analytical capability across probability modeling and dynamic spreadsheet reporting.",
       imagePlaceholderNote: "Screenshot of turned-in Midterm Examination on MS Teams.",
-      defaultImageSrc: "/assets/coursework/midterm-project.png",
+      defaultImageSrc: "./assets/coursework/midterm-project.png",
       tags: ["Midterm Examination", "Probability Modeling", "Pivot Architectures"]
     },
     {
@@ -761,7 +761,7 @@ plt.show()`,
       ],
       explanation: "Successfully completed final course examination, fulfilling all evaluative criteria for ITC C503.",
       imagePlaceholderNote: "Screenshot of turned-in Final Examination on MS Teams.",
-      defaultImageSrc: "/assets/coursework/final-quiz-1.png",
+      defaultImageSrc: "./assets/coursework/final-quiz-1.png",
       tags: ["Final Examination", "Python Data Science", "Course Capstone"]
     }
   ],
@@ -789,3 +789,4 @@ plt.show()`,
     closingStatement: "This class portfolio stands as verified academic documentation of my learning journey, practical competencies, and dedication to excellence in Information Technology and Data Science at Jose Rizal University."
   }
 };
+

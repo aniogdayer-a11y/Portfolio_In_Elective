@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { viteSingleFile } from 'vite-plugin-singlefile'
+import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,8 +12,13 @@ export default defineConfig({
     tailwindcss(),
     viteSingleFile(),
   ],
+  build: {
+    rollupOptions: {
+      input: resolve(__dirname, 'index.dev.html'),
+    },
+  },
   server: {
-    open: true,
+    open: '/index.dev.html',
     port: 5173,
     host: true,
     watch: {
