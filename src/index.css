@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/assets/fonts/manrope-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-document: #ffffff;
+    --border-color: #cbd5e1;
+    --border-subtle: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --navy-primary: #1e3a8a;
+    --navy-dark: #0f172a;
+    --navy-light: #3b82f6;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-page: #0b0f19;
+    --bg-surface: #111827;
+    --bg-document: #131b2e;
+    --border-color: #1e293b;
+    --border-subtle: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --navy-primary: #60a5fa;
+    --navy-dark: #f8fafc;
+    --navy-light: #93c5fd;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  /* Academic Document Headings */
+  h1, h2, h3, h4, .font-academic {
+    font-family: "Inter", "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .font-condensed {
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  }
+
+  .font-script {
+    font-family: "Caveat", cursive;
+  }
+
+  :focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Document Container Sheet */
+.academic-document {
+  background-color: var(--bg-document);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Formal Academic Section Header */
+.academic-section-header {
+  border-bottom: 2px solid #1e3a8a;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Table of Contents Leader Line */
+.toc-leader {
+  flex-grow: 1;
+  border-bottom: 1px dotted var(--border-color);
+  margin: 0 0.5rem;
+  position: relative;
+  top: -4px;
+}
+
+/* Print Styles — Strictly Formatted for Prof. Virginia B. Loyola's 1-inch Margin Requirement */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 1in;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .no-print,
+  .site-header,
+  .theme-toggle-btn,
+  .upload-btn-group,
+  .lightbox-modal,
+  .btn-interactive,
+  .toast-container {
+    display: none !important;
+  }
+
+  .print-page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .academic-document {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    background: transparent !important;
+  }
+
+  pre, code {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    border: 1px solid #e2e8f0 !important;
+    white-space: pre-wrap !important;
+    font-size: 8.5pt !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+  }
+}
