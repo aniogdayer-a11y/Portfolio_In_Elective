@@ -6,7 +6,7 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './',
+  base: process.env.GITHUB_PAGES === 'true' ? '/Portfolio_In_Elective/' : './',
   plugins: [
     react(),
     tailwindcss(),
